@@ -1,0 +1,21 @@
+{
+  "name": "lovelyroom",
+  "version": "1.0.0",
+  "description": "周军和申玉的小窝",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "push": "sh deploy.sh"
+  },
+  "author": "周军",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.1.0",
+    "vuepress": "^1.9.7",
+    "vuepress-theme-reco": "^1.6.11"
+  },
+  "dependencies": {}
+}
