@@ -5,30 +5,38 @@
       <div class="content mar-bot-16">深圳终点站，吃货崛起。</div>
     </div>
     <div>
-      <baidu-map
+      <component
+        v-if="BaiduMap"
+        :is="BaiduMap"
         :center="center"
         :zoom="zoom"
         :scroll-wheel-zoom="true"
         class="baidu-map-view"
         @ready="map_handler"
         ak="XxRuUzs5DCi0x3AxBfYAXZgHkzUQ8nzf"
-      ></baidu-map>
+      ></component>
     </div>
   </div>
 </template>
 
 <script>
-import { BaiduMap } from "vue-baidu-map";
+// import { BaiduMap } from "vue-baidu-map";
 export default {
   name: "shangchuanVillage",
-  components: {
-    BaiduMap,
-  },
+  //   components: {
+  //     BaiduMap,
+  //   },
   data() {
     return {
       center: { lng: 0, lat: 0 },
       zoom: 20,
+      BaiduMap: null,
     };
+  },
+  mounted() {
+    import("vue-baidu-map").then((module) => {
+      this.BaiduMap = module.BaiduMap;
+    });
   },
   methods: {
     //地图显示的回调
