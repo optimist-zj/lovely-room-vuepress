@@ -17,5 +17,7 @@
     "vuepress": "^1.9.7",
     "vuepress-theme-reco": "^1.6.11"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue-baidu-map": "^0.21.22"
+  }
 }

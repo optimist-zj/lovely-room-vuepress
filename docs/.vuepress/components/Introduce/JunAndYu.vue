@@ -1,9 +1,52 @@
 <template>
-  <div class="love-time">天数：{{ days }}</div>
+  <div>
+    <div id="react">
+      <div class="out_frount">
+        <img src="../../image/J&Y/out-1.png" class="out_pic" />
+      </div>
+      <div class="out_back">
+        <img src="../../image/J&Y/out-2.png" class="out_pic" />
+      </div>
+      <div class="out_left">
+        <img src="../../image/J&Y/out-3.png" class="out_pic" />
+      </div>
+      <div class="out_right">
+        <img src="../../image/J&Y/out-4.png" class="out_pic" />
+      </div>
+      <div class="out_top">
+        <img src="../../image/J&Y/out-5.png" class="out_pic" />
+      </div>
+      <div class="out_bottom">
+        <img src="../../image/J&Y/out-6.jpg" class="out_pic" />
+      </div>
+      <span class="in_frount">
+        <img src="../../image/J&Y/in-y-1.jpg" class="in_pic" />
+      </span>
+      <span class="in_back">
+        <img src="../../image/J&Y/in-j-1.png" class="in_pic" />
+      </span>
+      <span class="in_left">
+        <img src="../../image/J&Y/in-y-2.png" class="in_pic" />
+      </span>
+      <span class="in_right">
+        <img src="../../image/J&Y/in-j-2.png" class="in_pic" />
+      </span>
+      <span class="in_top">
+        <img src="../../image/J&Y/in-y-3.png" class="in_pic" />
+      </span>
+      <span class="in_bottom">
+        <img src="../../image/J&Y/in-j-3.png" class="in_pic" />
+      </span>
+    </div>
+    <div>
+      今天是阿军和阿玉在一起的第<span class="days">{{ days }}</span
+      >天
+    </div>
+  </div>
 </template>
 <script>
 export default {
-  name: "love",
+  name: "JunAndYu",
   data() {
     return {
       days: Math.floor(
@@ -11,102 +54,104 @@ export default {
       ),
     };
   },
-  mounted() {
-    (function (window, document) {
-      var hearts = [];
-      window.requestAnimationFrame = (function () {
-        return (
-          window.requestAnimationFrame ||
-          window.webkitRequestAnimationFrame ||
-          window.mozRequestAnimationFrame ||
-          window.oRequestAnimationFrame ||
-          window.msRequestAnimationFrame ||
-          function (callback) {
-            setTimeout(callback, 1000 / 60);
-          }
-        );
-      })();
-      init();
-      function init() {
-        css(
-          ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
-        );
-        attachEvent();
-        gameloop();
-      }
-      function gameloop() {
-        for (var i = 0; i < hearts.length; i++) {
-          if (hearts[i].alpha <= 0) {
-            document.body.removeChild(hearts[i].el);
-            hearts.splice(i, 1);
-            continue;
-          }
-          hearts[i].y--;
-          hearts[i].scale += 0.004;
-          hearts[i].alpha -= 0.013;
-          hearts[i].el.style.cssText =
-            "left:" +
-            hearts[i].x +
-            "px;top:" +
-            hearts[i].y +
-            "px;opacity:" +
-            hearts[i].alpha +
-            ";transform:scale(" +
-            hearts[i].scale +
-            "," +
-            hearts[i].scale +
-            ") rotate(45deg);background:" +
-            hearts[i].color;
-        }
-        requestAnimationFrame(gameloop);
-      }
-      function attachEvent() {
-        var old = typeof window.onclick === "function" && window.onclick;
-        window.onclick = function (event) {
-          old && old();
-          createHeart(event);
-        };
-      }
-      function createHeart(event) {
-        var d = document.createElement("div");
-        d.className = "heart";
-        hearts.push({
-          el: d,
-          x: event.clientX - 5,
-          y: event.clientY - 5,
-          scale: 1,
-          alpha: 1,
-          color: randomColor(),
-        });
-        document.body.appendChild(d);
-      }
-      function css(css) {
-        var style = document.createElement("style");
-        style.type = "text/css";
-        try {
-          style.appendChild(document.createTextNode(css));
-        } catch (ex) {
-          style.styleSheet.cssText = css;
-        }
-        document.getElementsByTagName("head")[0].appendChild(style);
-      }
-      function randomColor() {
-        return (
-          "rgb(" +
-          ~~(Math.random() * 255) +
-          "," +
-          ~~(Math.random() * 255) +
-          "," +
-          ~~(Math.random() * 255) +
-          ")"
-        );
-      }
-    })(window, document);
-  },
 };
 </script>
-<style scoped>
-.love-time {
-  color: red;
+<style lang="scss" scoped>
+#react {
+  width: 300px;
+  height: 300px;
+  margin: 100px auto 100px;
+  transform-style: preserve-3d;
+  animation: rotate 20s infinite;
+  animation-timing-function: linear;
+  div {
+    position: absolute;
+    transition: all 0.4s;
+    .out_pic {
+      width: 300px;
+      height: 300px;
+      opacity: 0.9;
+    }
+    .in_pic {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  span {
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50px;
+    left: 50px;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+.out_frount {
+  transform: translateZ(150px);
+}
+.out_back {
+  transform: translateZ(-150px);
+}
+.out_left {
+  transform: rotateY(90deg) translateZ(150px);
+}
+.out_right {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+.out_top {
+  transform: rotateX(90deg) translateZ(150px);
+}
+.out_bottom {
+  transform: rotateX(-90deg) translateZ(150px);
+}
+.in_frount {
+  transform: translateZ(100px);
+}
+.in_back {
+  transform: translateZ(-100px);
+}
+.in_left {
+  transform: rotateY(90deg) translateZ(100px);
+}
+.in_right {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+.in_top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.in_bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+#react:hover .out_frount {
+  transform: translateZ(300px);
+}
+#react:hover .out_back {
+  transform: translateZ(-300px);
+}
+#react:hover .out_left {
+  transform: rotateY(90deg) translateZ(300px);
+}
+#react:hover .out_right {
+  transform: rotateY(-90deg) translateZ(300px);
+}
+#react:hover .out_top {
+  transform: rotateX(90deg) translateZ(300px);
+}
+#react:hover .out_bottom {
+  transform: rotateX(-90deg) translateZ(300px);
+}
+.days {
+  font-size: 16pxv;
+  font-weight: bold;
+  color: #ff2d2d;
 }
 </style>

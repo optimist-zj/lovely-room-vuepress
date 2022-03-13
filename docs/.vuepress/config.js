@@ -1,6 +1,6 @@
 module.exports = {
-    title: '这是标题',
-    description: '这是描述',
+    title: '周军和申玉的小窝',
+    description: '周军和申玉的小窝',
     theme: 'reco',
     base: '/lovely-room/',
     head: [
@@ -9,14 +9,14 @@ module.exports = {
     themeConfig: {
         subSidebar: 'auto',
         nav: [
-            { text: '首页', link: '/' },
-            {
-                text: '周军的博客',
-                items: [
-                    { text: 'Github', link: 'https://github.com/optimist-zj' },
-                    { text: '掘金', link: 'https://juejin.cn/user/317097882963767' }
-                ]
-            }
+            { text: 'J&Y', link: '/' },
+            // {
+            //     text: '周军的博客',
+            //     items: [
+            //         { text: 'Github', link: 'https://github.com/optimist-zj' },
+            //         { text: '掘金', link: 'https://juejin.cn/user/317097882963767' }
+            //     ]
+            // }
         ],
         sidebar: [
             {
